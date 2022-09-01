@@ -278,4 +278,21 @@ public class Board : MonoBehaviour
         }
                 return true;
     }
+
+    public void Reset()
+    {
+        for(int i = 0; i < width; i ++)
+        {
+            for(int j = 0; j < height; j ++)
+            {
+                if (allDots[i, j] != null)
+                {
+                    Destroy(allDots[i, j]);
+                }    
+            }    
+        }
+        scoreManager.score = 0;
+        Setup();
+    }
+
 }
