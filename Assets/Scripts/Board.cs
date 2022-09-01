@@ -15,11 +15,16 @@ public class Board : MonoBehaviour
     public int basePieceValue = 20;
     private ScoreManager scoreManager;
 
+    [Header("Dead Locked!!!")]
+    public GameObject pausePanel;
+    public GameObject resetButton;
+
     // Start is called before the first frame update
     void Start()
     {
         scoreManager = FindObjectOfType<ScoreManager>();
-        findMatches = FindObjectOfType<FindMatches>();
+        findMatches = FindObjectOfType<FindMatches>();   
+
         allTiles = new BackgroundTile[width, height];
         allDots = new GameObject[width, height];
         Setup();
@@ -191,6 +196,8 @@ public class Board : MonoBehaviour
         if (IsDeadLocked())
         {
             Debug.Log("Deadlocked");
+            pausePanel.SetActive(true);
+            resetButton.SetActive(true);
         }
     }
 
